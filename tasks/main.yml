@@ -1,0 +1,50 @@
+---
+- name: Debian | Extra packages install
+  apt: name={{item}} state=present update_cache=yes
+  with_items:
+    - apache2
+    - libapache2-mod-php5
+    - libapache2-mod-security2       ## Not available on Raspbian
+    - git
+    - python-passlib
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: enabled mod_ssl
+  apache2_module: name=ssl state=present
+- name: enabled mod_headers
+  apache2_module: name=headers state=present
+- stat: path=/etc/apache2/sites-enabled/default-ssl.conf
+  register: conf
+- name: Web server security
+  command: "{{ item }}"
+  with_items:
+    - a2ensite default-ssl
+  become: yes 
+  when: not conf.stat.exists
+  notify:
+    - restart apache
+- name: Additional apache security config
+  copy:
+    src=harden.conf dest=/etc/apache2/conf-enabled/security2.conf mode=0644
+  notify:
+    - restart apache
+- name: ossec-wui apache config
+  copy:
+    src=apache-ossecwui.conf dest=/etc/apache2/conf-enabled/apache-ossecwui.conf mode=0644
+  notify:
+    - restart apache
+
+- name: git clone ossec-wui
+  git:
+    repo=https://github.com/ossec/ossec-wui.git
+    dest=/var/www/html/ossec-wui
+- name: Creating htpasswd file
+  htpasswd: path=/var/www/html/ossec-wui/.htpasswd name={{ ossecwui_webuser }} password={{ ossecwui_webpass }} owner=root group=www-data mode=0640
+
+- name: ensure ossec group exists (normally provided by ossec-server)
+  group: name=ossec state=present
+- name: ensure www-data user in ossec group
+  user: name=www-data groups=ossec append=yes
+- file: path=/var/ossec/tmp owner=root group=www-data mode=0770 state=directory
+
+

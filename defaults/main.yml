@@ -1,0 +1,4 @@
+
+#ossecwui_user: _ossecwui
+ossecwui_webuser: oadmin
+ossecwui_webpass: oadminpass
