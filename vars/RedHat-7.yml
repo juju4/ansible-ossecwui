@@ -1,0 +1,17 @@
+---
+
+www_user: apache
+apache_svc: httpd
+apache_confdir: /etc/httpd/conf.d
+apachesslconf: /etc/apache2/sites-enabled/default-ssl.conf
+modsecurity_conf: /etc/httpd/conf.d/mod_security.conf
+modsecurity_active: /etc/httpd/modsecurity.d/activated_rules
+
+ossec_wui_pkgs:
+    - httpd
+    - php
+    - git
+    - python-pip
+#    - python-passlib
+    - wget
+

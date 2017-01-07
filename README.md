@@ -52,6 +52,7 @@ $ vagrant ssh
 
 ## Troubleshooting & Known issues
 
+* default role set up only http server, not https. use harden-webserver role to set it
 
 ## License
 

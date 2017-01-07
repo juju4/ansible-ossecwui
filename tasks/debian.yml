@@ -1,0 +1,11 @@
+---
+
+- name: Debian | Extra packages install
+  apt: name={{item}} state=present update_cache=yes
+  with_items: "{{ ossec_wui_pkgs }}"
+## because of lxc: error: unpacking of archive failed on file /usr/sbin/suexec: cpio: cap_set_file
+  ignore_errors: true
+
+- name: enabled mod_headers
+  apache2_module: name=headers state=present
+

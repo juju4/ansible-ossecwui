@@ -1,0 +1,17 @@
+---
+
+- name: RedHat | Extra packages install
+  yum: name={{item}} state=present update_cache=yes
+  with_items: "{{ ossec_wui_pkgs }}"
+## because of lxc: error: unpacking of archive failed on file /usr/sbin/suexec: cpio: cap_set_file
+  ignore_errors: true
+
+- name: install python passlib (htpasswd)
+  pip: name=passlib
+
+- name: Ensure appropriate directories exist
+  file: dest={{ item }} state=directory mode=0755
+  with_items:
+    - /var/log/httpd
+    - /var/www/html
+
