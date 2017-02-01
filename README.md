@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/juju4/ansible-ossecwui.svg?branch=master)](https://travis-ci.org/juju4/ansible-ossecwui)
+[![Build Status - Master](https://travis-ci.org/juju4/ansible-ossecwui.svg?branch=master)](https://travis-ci.org/juju4/ansible-ossecwui)
+[![Build Status - Devel](https://travis-ci.org/juju4/ansible-ossecwui.svg?branch=devel)](https://travis-ci.org/juju4/ansible-ossecwui/branches)
 # Ossec WebUI ansible role
 
 A simple ansible role to setup ossec Web UI
@@ -13,6 +14,7 @@ Normally to be installed on OSSEC server system.
 It was tested on the following versions:
  * 1.9
  * 2.0
+ * 2.2
 
 ### Operating systems
 
@@ -26,7 +28,7 @@ For example
 ```
 - host: all
   roles:
-    - ossecwui
+    - juju4.ossecwui
 ```
 
 ## Variables
@@ -39,13 +41,13 @@ This role has a travis basic test (for github), more advanced with kitchen and a
 
 Once you ensured all necessary roles are present, You can test with:
 ```
-$ cd /path/to/roles/ossecwui
+$ cd /path/to/roles/juju4.ossecwui
 $ kitchen verify
 $ kitchen login
 ```
 or
 ```
-$ cd /path/to/roles/ossecwui/test/vagrant
+$ cd /path/to/roles/juju4.ossecwui/test/vagrant
 $ vagrant up
 $ vagrant ssh
 ```
