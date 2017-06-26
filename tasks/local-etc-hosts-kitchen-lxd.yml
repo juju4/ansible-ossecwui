@@ -8,5 +8,6 @@
 - name: Add new hostname in /etc/hosts (local resolv)
   replace:
     "dest='/etc/hosts' regexp='localhost' replace='localhost {{ ansible_hostname }}'"
-  when: ansible_virtualization_type is defined and (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker")
+#  when: ansible_virtualization_type is defined and (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker")
+  when: ansible_virtualization_type is defined and (ansible_virtualization_type == "lxc")
 
