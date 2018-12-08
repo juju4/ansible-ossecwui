@@ -1,7 +1,7 @@
 ---
 
 - name: RedHat | Extra packages install
-  yum: name={{item}} state=present update_cache=yes
+  yum: name={{ item }} state=present update_cache=yes
   with_items: "{{ ossec_wui_pkgs }}"
 ## because of lxc: error: unpacking of archive failed on file /usr/sbin/suexec: cpio: cap_set_file
   ignore_errors: true
@@ -14,4 +14,3 @@
   with_items:
     - /var/log/httpd
     - /var/www/html
-

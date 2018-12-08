@@ -14,4 +14,3 @@ ossec_wui_pkgs:
     - libapache2-mod-security2       ## Not available on Raspbian
     - git
     - python-passlib
-

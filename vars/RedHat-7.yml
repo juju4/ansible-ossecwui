@@ -14,4 +14,3 @@ ossec_wui_pkgs:
     - python-pip
 #    - python-passlib
     - wget
-

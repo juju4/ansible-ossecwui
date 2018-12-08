@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: ossecwui
   author: juju4
   description: setup ossec Web UI
   license: BSD
@@ -26,4 +27,3 @@ galaxy_info:
   - system
   - security
 dependencies: []
-
