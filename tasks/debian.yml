@@ -1,8 +1,10 @@
 ---
 
 - name: Debian | Extra packages install
-  apt: name={{ item }} state=present update_cache=yes
-  with_items: "{{ ossec_wui_pkgs }}"
+  apt:
+    name: "{{ ossec_wui_pkgs }}"
+    state: present
+    update_cache: yes
 ## because of lxc: error: unpacking of archive failed on file /usr/sbin/suexec: cpio: cap_set_file
   ignore_errors: true
 
