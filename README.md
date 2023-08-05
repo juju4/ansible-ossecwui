@@ -1,5 +1,8 @@
 [![Build Status - Master](https://travis-ci.org/juju4/ansible-ossecwui.svg?branch=master)](https://travis-ci.org/juju4/ansible-ossecwui)
 [![Build Status - Devel](https://travis-ci.org/juju4/ansible-ossecwui.svg?branch=devel)](https://travis-ci.org/juju4/ansible-ossecwui/branches)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+# DEPRECATED/LOOKING FOR MAINTAINERS -> archived
 # Ossec WebUI ansible role
 
 A simple ansible role to setup ossec Web UI
